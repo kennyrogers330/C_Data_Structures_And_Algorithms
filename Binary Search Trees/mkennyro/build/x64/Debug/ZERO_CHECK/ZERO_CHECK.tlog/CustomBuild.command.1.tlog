@@ -1,0 +1,10 @@
+^C:\USERS\ROBOT\ONEDRIVE - ANDREW.CMU.EDU\DESKTOP\SEM2\DSA\ASSIGINMENTS\08 MARCH\MKENNYRO\BUILD\CMAKEFILES\021B650680ED2F2E79AE6651065C1CE1\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/08 March/mkennyro" "-BC:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/08 March/mkennyro/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/08 March/mkennyro/build/assignment3.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

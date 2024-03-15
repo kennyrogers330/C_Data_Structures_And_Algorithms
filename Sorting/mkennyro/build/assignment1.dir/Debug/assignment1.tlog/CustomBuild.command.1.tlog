@@ -1,0 +1,10 @@
+^C:\USERS\ROBOT\ONEDRIVE - ANDREW.CMU.EDU\DESKTOP\SEM2\DSA\ASSIGINMENTS\23 FEB\MKENNYRO\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/23 Feb/mkennyro" "-BC:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/23 Feb/mkennyro/build" --check-stamp-file "C:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/23 Feb/mkennyro/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
