@@ -1,0 +1,164 @@
+1)#include <stdio.h>
+#include <stdlib.h>
+
+// Struct to represent a node in the linked list
+struct Node {
+  int data;
+  struct Node* next;
+};
+
+// Function to reverse the linked list
+void reverse(struct Node** head_ref) {
+  // Initialize pointers to track current, previous, and next nodes
+  struct Node* current = *head_ref;
+  struct Node* prev = NULL;
+  struct Node* next = NULL;
+
+  // Iterate through the list and update the pointers
+  while (current != NULL) {
+    next = current->next;
+    current->next = prev;
+    prev = current;
+    current = next;
+  }
+
+  // Update the head to point to the reversed list
+  *head_ref = prev;
+}
+
+// Function to insert a new node at the end of the list
+void insert(struct Node** head_ref, int data) {
+  // Create a new node and set its data
+  struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
+  new_node->data = data;
+  new_node->next = NULL;
+
+  // If the list is empty, set the new node as the head
+  if (*head_ref == NULL) {
+    *head_ref = new_node;
+    return;
+  }
+
+  // Find the last node in the list
+  struct Node* current = *head_ref;
+  while (current->next != NULL) {
+    current = current->next;
+  }
+
+  // Append the new node to the end of the list
+  current->next = new_node;
+}
+
+// Function to print the linked list
+void print_list(struct Node* head) {
+  while (head != NULL) {
+    printf("%d ", head->data);
+    head = head->next;
+  }
+  printf("\n");
+}
+
+int main() {
+  // Create a linked list with the values 5->9->1->2->5->8
+  struct Node* head = NULL;
+  insert(&head, 5);
+  insert(&head, 9);
+  insert(&head, 1);
+  insert(&head, 2);
+  insert(&head, 5);
+  insert(&head, 8);
+
+  // Print the original linked list
+  printf("Original list: ");
+  print_list(head);
+
+  // Reverse the linked list
+  reverse(&head);
+
+  // Print the reversed linked list
+  printf("Reversed list: ");
+  print_list(head);
+
+  return 0;
+}
+
+=================================================================================================================
+==============================================================================================
+2)#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+// Struct to represent a node in the stack
+struct Node {
+  int data;
+  struct Node* next;
+};
+
+// Function to create a new node
+struct Node* new_node(int data) {
+  struct Node* node = (struct Node*) malloc(sizeof(struct Node));
+  node->data = data;
+  node->next = NULL;
+  return node;
+}
+
+// Function to push a new element onto the stack
+void push(struct Node** top_ref, int data) {
+  struct Node* new_node = new_node(data);
+  new_node->next = *top_ref;
+  *top_ref = new_node;
+}
+
+// Function to pop the top element from the stack
+int pop(struct Node** top_ref) {
+  if (*top_ref == NULL) {
+    printf("Error: Stack is empty\n");
+    return INT_MIN;
+  }
+
+  int data = (*top_ref)->data;
+  struct Node* temp = *top_ref;
+  *top_ref = (*top_ref)->next;
+  free(temp);
+  return data;
+}
+
+// Function to find the two minimum values in the stack
+void find_two_minimums(struct Node* top, int* min1, int* min2) {
+  // Initialize the minimum values to the maximum possible value
+  *min1 = INT_MAX;
+  *min2 = INT_MAX;
+
+  // Iterate through the stack and update the minimum values
+  while (top != NULL) {
+    // If the current value is less than the current minimum value,
+    // update the minimum values
+    if (top->data < *min1) {
+      *min2 = *min1;
+      *min1 = top->data;
+    } else if (top->data < *min2) {
+      *min2 = top->data;
+    }
+    top = top->next;
+  }
+}
+
+int main() {
+  // Create a stack with the values 5->9->1->2->5->8
+  struct Node* top = NULL;
+  push(&top, 5);
+  push(&top, 9);
+  push(&top, 1);
+  push(&top, 2);
+  push(&top, 5);
+  push(&top, 8);
+
+  // Find the two minimum values in the stack
+  int min1, min2;
+  find_two_minimums(top, &min1, &min2);
+
+  // Print the minimum values
+  printf("Minimum values: %d %d\n", min1, min2);
+
+  return 0;
+}

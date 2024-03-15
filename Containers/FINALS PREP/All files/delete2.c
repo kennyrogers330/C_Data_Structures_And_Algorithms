@@ -1,0 +1,85 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+/* a node of the doubly linked list */
+struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+/* Function to delete a node in a Doubly Linked List.
+   head_ref --> pointer to head node pointer.
+   del  -->  pointer to node to be deleted. */
+void deleteNode(struct Node** head_ref, struct Node* del)
+{
+    /* base case */
+    if (*head_ref == NULL || del == NULL)
+        return;
+
+    *head_ref = del->next;
+
+    del->next->prev = NULL;
+
+    /* Finally, free the memory occupied by del*/
+    free(del);
+    return;
+}
+
+/* UTILITY FUNCTIONS */
+/* Function to insert a node at the beginning of the Doubly Linked List */
+void push(struct Node** head_ref, int new_data)
+{
+    /* allocate node */
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+
+    /* put in the data  */
+    new_node->data = new_data;
+
+    /* since we are adding at the beginning,
+    prev is always NULL */
+    new_node->prev = NULL;
+
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+
+    /* change prev of head node to new node */
+    if ((*head_ref) != NULL)
+        (*head_ref)->prev = new_node;
+
+    /* move the head to point to the new node */
+    (*head_ref) = new_node;
+}
+
+/* Function to print nodes in a given doubly linked list
+   This function is same as printList() of singly linked list */
+void printList(struct Node* node)
+{
+    while (node != NULL) {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+}
+
+/* Driver program to test above functions*/
+int main()
+{
+    /* Start with the empty list */
+    struct Node* head = NULL;
+
+    /* Let us create the doubly linked list 10<->8<->4<->2 */
+    push(&head, 2);
+    push(&head, 4);
+    push(&head, 8);
+    push(&head, 10);
+
+    printf("\n Original Linked list ");
+    printList(head);
+
+    /* delete nodes from the doubly linked list */
+    deleteNode(&head, head); /*delete first node*/
+
+    printf("\n Modified Linked list ");
+    printList(head);
+}
