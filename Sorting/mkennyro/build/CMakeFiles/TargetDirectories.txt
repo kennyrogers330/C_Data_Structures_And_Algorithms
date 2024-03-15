@@ -1,3 +1,0 @@
-C:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/23 Feb/mkennyro/build/CMakeFiles/assignment2.dir
-C:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/23 Feb/mkennyro/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/robot/OneDrive - andrew.cmu.edu/Desktop/Sem2/DSA/Assiginments/23 Feb/mkennyro/build/CMakeFiles/ZERO_CHECK.dir
