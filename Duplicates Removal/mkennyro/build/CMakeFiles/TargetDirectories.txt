@@ -1,3 +1,0 @@
-C:/DSA4E/assignments/assignment1/mkennyro/build/CMakeFiles/mkennyro.dir
-C:/DSA4E/assignments/assignment1/mkennyro/build/CMakeFiles/ALL_BUILD.dir
-C:/DSA4E/assignments/assignment1/mkennyro/build/CMakeFiles/ZERO_CHECK.dir
